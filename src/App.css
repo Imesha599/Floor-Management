@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+/* Main App layout */
+.app {
+  display: flex; /* Flexbox for sidebar + room layout */
+  height: 100vh; /* Take full screen height */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Sidebar styles */
+.sidebar {
+  width: 200px; /* Fixed width for the sidebar */
+  padding: 10px;
+  background-color: #f0f0f0;
+  box-sizing: border-box; /* Prevent padding from affecting total width */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Canvas (main room) styles */
+.canvas {
+  flex: 1; /* Take up remaining space */
+  position: relative;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  padding: 10px; /* Optional padding inside canvas */
+  box-sizing: border-box; /* Ensure padding doesn't affect canvas size */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Table styles (for each table) */
+.table {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  background: lightblue;
+  border: 2px solid darkblue;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.table.square {
+  border-radius: 0; /* Square tables */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.table.round {
+  border-radius: 50%; /* Round tables */
+}
+
+/* Table form (fixed) */
+.table-form {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  z-index: 10; /* Ensure it's on top of other elements */
+}
+
+/* Additional responsive handling (optional) */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column; /* Stack sidebar and canvas on smaller screens */
   }
-  to {
-    transform: rotate(360deg);
+
+  .sidebar {
+    width: 100%; /* Full width for smaller screens */
+    height: auto;
+  }
+
+  .canvas {
+    flex: 1;
   }
 }
